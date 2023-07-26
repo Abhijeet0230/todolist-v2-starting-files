@@ -12,8 +12,9 @@ const connectDB= async ()=> {
     const conn = await mongoose.connect(process.env.MONGO_URI,{
       useUnifiedTopology: true,
       useNewUrlParser: true,
-      useCreateIndex: true,
+      
     });
+    // console.log(process.env.MONGO_URI);
     console.log(`MongoDb Connected: ${conn.connection.host}`);
   }catch(error) {
     console.log(error);
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 ////////////////////////
 // mongoose.connect("mongodb+srv://admin-abhijeet:Test123@cluster0.ha05mtj.mongodb.net/todolistDB", { useNewUrlParser: true });
+// console.log(process.env.MONGO_URI);
 const itemsSchema = new mongoose.Schema({
   //created the first schema
   name: String,
